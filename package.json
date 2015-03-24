@@ -1,0 +1,22 @@
+{
+  "name": "express-wr",
+  "version": "1.0.0",
+  "description": "Wrapped Response for express framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec test"
+  },
+  "keywords": [
+    "express",
+    "response",
+    "REST"
+  ],
+  "author": "Luis Valdovinos",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.12.2",
+    "mocha": "^2.2.1",
+    "should": "^5.2.0",
+    "supertest": "^0.15.0"
+  }
+}
