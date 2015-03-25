@@ -11,14 +11,15 @@ describe('Express Wrapped Response test case', function() {
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
+        var body = res.body;
         should(err).not.be.ok;
-        res.code.should.be.a.Number;
-        res.code.should.be.exactly(200);
-        res.data.should.be.a.String;
-        res.data.should.not.be.empty;
-        res.message.should.be.a.String;
-        res.message.should.be.empty;
-        res.status.should.be.exactly('success');
+        body.code.should.be.a.Number;
+        body.code.should.be.exactly(200);
+        body.data.should.be.a.String;
+        body.data.should.not.be.empty;
+        body.message.should.be.a.String;
+        body.message.should.be.empty;
+        body.status.should.be.exactly('success');
         done();
       });
   });
@@ -28,14 +29,15 @@ describe('Express Wrapped Response test case', function() {
       .expect(400)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
+        var body = res.body;
         should(err).not.be.ok;
-        res.code.should.be.a.Number;
-        res.code.should.be.exactly(400);
-        res.data.should.be.a.String;
-        res.data.should.not.be.empty;
-        res.message.should.be.a.String;
-        res.message.should.not.be.empty;
-        res.status.should.be.exactly('error');
+        body.code.should.be.a.Number;
+        body.code.should.be.exactly(400);
+        body.data.should.be.a.String;
+        body.data.should.not.be.empty;
+        body.message.should.be.a.String;
+        body.message.should.not.be.empty;
+        body.status.should.be.exactly('error');
         done();
       });
   });
@@ -45,14 +47,15 @@ describe('Express Wrapped Response test case', function() {
       .expect(500)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
+        var body = res.body;
         should(err).not.be.ok;
-        res.code.should.be.a.Number;
-        res.code.should.be.exactly(500);
-        res.data.should.be.a.String;
-        res.data.should.not.be.empty;
-        res.message.should.be.a.String;
-        res.message.should.not.be.empty;
-        res.status.should.be.exactly('fail');
+        body.code.should.be.a.Number;
+        body.code.should.be.exactly(500);
+        body.data.should.be.a.String;
+        body.data.should.be.empty;
+        body.message.should.be.a.String;
+        body.message.should.not.be.empty;
+        body.status.should.be.exactly('fail');
         done();
       });
   });

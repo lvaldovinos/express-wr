@@ -1,36 +1,21 @@
 'use strict';
 var express = require('express'),
     http = require('http'),
-    wr = require('./../'),
+    wr = require('./../')(express),
+    router = require('./router'),
     app = express(),
     server;
-    
-//initiate wr
-wr(app);
 
 //success response    
 app.get('/200', function(req, res) {
-  app.wr({
+  express.wr(res, {
     code : 200,
-    data : 'example!'
-  });
-});
-//error response
-app.get('/400', function(req, res) {
-  app.wr({
-    code : 400,
     data : 'example!',
-    message : 'Resource not found'
+    message : ''
   });
 });
-//fail response
-app.get('/500', function(req, res) {
-  app.wr({
-    code : 500,
-    data : '',
-    message : 'Error!'
-  });
-});
+
+app.use('/', router);
 
 server = http.createServer(app);
 
