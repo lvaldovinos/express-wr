@@ -1,6 +1,6 @@
 {
   "name": "express-wr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wrapped Response for express framework",
   "main": "index.js",
   "repository" : {
