@@ -49,6 +49,9 @@ app.get('/empty', function(req, res) {
   express.wr(res);
 });
 
+app.get('/object', function(req, res) {
+	express.wr(res, { userIds : [ 1, 2, 3, 4, 5]});
+});
 
 server = http.createServer(app);
 

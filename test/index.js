@@ -185,4 +185,20 @@ describe('Express Wrapped Response test case', function() {
         done();
       });
   });
+	it('should return a success wrapped response in spite of user only sent an OBJECT as body', function(done) {
+		request(server)
+			.get('/object')
+			.expect(200)
+			.expect('Content-Type', /json/)
+			.end(function(err , res) {
+				var body = res.body;
+				body.code.should.be.exactly(200);
+				body.data.should.be.an.Object;
+				body.message.should.be.a.String;
+				body.message.should.be.empty;
+				body.status.should.be.exactly('success');
+				done();
+			});
+	});
+
 });

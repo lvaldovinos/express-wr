@@ -10,7 +10,10 @@ var _util = {
   },
   isDate : function(obj) {
     return toString.call(obj) === '[object Date]';
-  }
+  },
+	isSpecObj : function(obj) {
+		return (this.isObject(obj) && ('code' in obj) && ('data' in obj));
+	}
 };
 
 module.exports = function(express) {
@@ -20,7 +23,7 @@ module.exports = function(express) {
       express.wr = function(res, spec) {
         var spec = spec || '';
         var code = spec.code || 200,
-            data = !(_util.isObject(spec)) ? (_util.isDate(spec) ? spec.toString() : spec) : spec.data,
+            data = !(_util.isObject(spec)) ? (_util.isDate(spec) ? spec.toString() : spec) : (_util.isSpecObj(spec) ? spec.data : spec),
             message = spec.message || '',
             status = (code >= 500 && code < 600) ? 'fail'
                      : (code >= 400 && code < 500) ? 'error' : 'success' ;
