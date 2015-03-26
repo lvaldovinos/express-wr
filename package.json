@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Wrapped Response for express framework",
   "main": "index.js",
-  "scripts": {
+  "repository" : {
+		"type" : "git",
+		"url" : "https://github.com/lvaldovinos/express-wr.git"
+	},
+	"scripts": {
     "test": "mocha -R spec test"
   },
   "keywords": [
