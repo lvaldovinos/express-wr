@@ -200,5 +200,30 @@ describe('Express Wrapped Response test case', function() {
 				done();
 			});
 	});
-
+  it('should send custom filds plus the ones we expect', function(done) {
+    var custom = {
+      error: 'this is an example',
+      num: 123,
+      obj: {}
+    };
+    request(server)
+      .post('/custom')
+      .send(custom)
+      .type('application/json')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(function(err, res) {
+        if (err) return done(err);
+        var body = res.body,
+          expect = {
+            error: body.error,
+            num: body.num,
+            obj: body.obj
+          };
+        body.should.be.an.Object;
+        body.should.have.properties['error', 'code', 'data', 'message', 'error', 'num', 'obj'];
+        custom.should.eql(expect);
+        return done(null)
+      });
+  });
 });

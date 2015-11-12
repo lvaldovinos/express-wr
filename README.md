@@ -128,6 +128,33 @@ app.get('/array', function(req, res) {
   }
 ```
 
+<h2>Sending custom properties in wrapped response</h2>
+<p>You can also send different custom properties in a wrapped response, for instace:</p>
+
+```javascript
+app.get('/custom', function(req, res) {
+  express.wr(res, {
+    code: 200,
+    data: {},
+    message: ''
+  }, {
+    error: 'this is an example',
+    num: 123,
+    obj: {}
+  });
+});
+```
+<p>You will get a 500 response with a body like this:</p>
+```json
+  { "code" : 500,
+    "status" : "fail",
+    "data" : "Unable to process request",
+    "message" : "Invalid arguments",
+    "error": "this is an example",
+    "num": "123",
+    "obj": {}
+  }
+```
 
 <h2>Test</h2>
 
