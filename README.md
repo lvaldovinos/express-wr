@@ -144,14 +144,14 @@ app.get('/custom', function(req, res) {
   });
 });
 ```
-<p>You will get a 500 response with a body like this:</p>
+<p>You will get a 200 response with a body like this:</p>
 ```json
-  { "code" : 500,
-    "status" : "fail",
-    "data" : "Unable to process request",
-    "message" : "Invalid arguments",
+  { "code" : 200,
+    "status" : "success",
+    "data" : {},
+    "message" : "",
     "error": "this is an example",
-    "num": "123",
+    "num": 123,
     "obj": {}
   }
 ```
